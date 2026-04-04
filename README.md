@@ -1,7 +1,7 @@
 课堂助手系统
 
 # 1. 克隆仓库
-git clone https://github.com/lllssssyyy/lsy-reposiyory.git
+git clone https://github.com/lllssssyyy/lsy-repository.git
 cd classhelper
 
 # 2. 安装依赖
