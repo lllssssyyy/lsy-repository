@@ -6,10 +6,7 @@ cd classhelper
 pip install -r requirements.txt
 
 # 3. 初始化数据库
-python
->>> from app import db
->>> db.create_all()
->>> exit()
+python -c "from app import app, db; with app.app_context(): db.create_all()"
 
 # 4. 启动应用
 python app.py
