@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}班级成绩分析{% endblock %}
+{% block content %}
+<h2>班级成绩分析</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5>平均分: {{ avg_score }}</h5>
+                <h5>最高分: {{ max_score }}</h5>
+                <h5>最低分: {{ min_score }}</h5>
+            </div>
+        </div>
+        <canvas id="scoreChart" width="400" height="200"></canvas>
+    </div>
+    <div class="col-md-6">
+        <h5>学生成绩列表</h5>
+        <table class="table table-sm">
+            <thead><tr><th>姓名</th><th>平均分</th></tr></thead>
+            <tbody>
+                {% for stu in student_scores %}
+                <tr><td>{{ stu.name }}</td><td>{{ stu.avg|round(1) }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('scoreChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['<60', '60-69', '70-79', '80-89', '90-100'],
+            datasets: [{
+                label: '人数',
+                data: {{ bins|tojson }},
+                backgroundColor: 'rgba(54, 162, 235, 0.5)'
+            }]
+        }
+    });
+</script>
+{% endblock %}

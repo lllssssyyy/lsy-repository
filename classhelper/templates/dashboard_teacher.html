@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}教师控制台{% endblock %}
+{% block content %}
+<h2>教师工作台</h2>
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">📋 作业管理</h5>
+                <a href="{{ url_for('teacher_assignments') }}" class="btn btn-primary mt-2">管理作业</a>
+                <a href="{{ url_for('create_assignment') }}" class="btn btn-outline-primary mt-2">发布新作业</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">📢 发起签到</h5>
+                <a href="{{ url_for('start_signin') }}" class="btn btn-primary mt-2">生成签到码</a>
+                <a href="{{ url_for('signin_records') }}" class="btn btn-outline-primary mt-2">签到记录</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">📊 成绩统计</h5>
+                <a href="{{ url_for('statistics') }}" class="btn btn-primary mt-2">查看班级成绩分析</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

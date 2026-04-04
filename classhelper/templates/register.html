@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}注册{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <h2 class="text-center mb-4">注册</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label>用户名</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>密码</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>真实姓名</label>
+                <input type="text" name="real_name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>角色</label>
+                <select name="role" id="roleSelect" class="form-select" required>
+                    <option value="student">学生</option>
+                    <option value="teacher">教师</option>
+                </select>
+            </div>
+            <div class="mb-3" id="studentIdDiv">
+                <label>学号</label>
+                <input type="text" name="student_id" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">注册</button>
+        </form>
+        <p class="mt-3 text-center">已有账号？<a href="{{ url_for('login') }}">登录</a></p>
+    </div>
+</div>
+<script>
+    const roleSelect = document.getElementById('roleSelect');
+    const studentIdDiv = document.getElementById('studentIdDiv');
+    roleSelect.addEventListener('change', function() {
+        if (this.value === 'student') {
+            studentIdDiv.style.display = 'block';
+        } else {
+            studentIdDiv.style.display = 'none';
+        }
+    });
+    roleSelect.dispatchEvent(new Event('change'));
+</script>
+{% endblock %}

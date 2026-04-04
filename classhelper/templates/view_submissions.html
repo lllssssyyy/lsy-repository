@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}查看提交 - {{ assignment.title }}{% endblock %}
+{% block content %}
+<h2>{{ assignment.title }} - 学生提交</h2>
+<table class="table">
+    <thead><tr><th>学生</th><th>提交时间</th><th>文本答案</th><th>附件</th><th>分数</th><th>操作</th></tr></thead>
+    <tbody>
+        {% for sub in submissions %}
+        <tr>
+            <td>{{ sub.student_id }}</td>
+            <td>{{ sub.submitted_at.strftime('%Y-%m-%d %H:%M') }}</td>
+            <td>{{ sub.content_text[:30] if sub.content_text else '无' }}</td>
+            <td>{% if sub.file_path %}<a href="{{ url_for('uploaded_file', filename=sub.file_path.split('/')[-1]) }}" target="_blank">下载</a>{% else %}无{% endif %}</td>
+            <td>{{ sub.grade if sub.grade is not none else '未评分' }}</td>
+            <td><a href="{{ url_for('grade_submission', sid=sub.id) }}" class="btn btn-sm btn-warning">评分</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
