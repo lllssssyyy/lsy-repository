@@ -1,5 +1,5 @@
 # 1. 克隆仓库
-git clone https://gitee.com/lllsssyyy/classhelper.git
+git clone https://github.com/lllssssyyy/lsy-reposiyory.git
 cd classhelper
 
 # 2. 安装依赖
