@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}提交作业{% endblock %}
+{% block content %}
+<h2>提交作业：{{ assignment.title }}</h2>
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label>文本答案</label>
+        <textarea name="content_text" class="form-control" rows="5"></textarea>
+    </div>
+    <div class="mb-3">
+        <label>附件（可选）</label>
+        <input type="file" name="file" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">提交</button>
+    <a href="{{ url_for('student_assignments') }}" class="btn btn-secondary">返回</a>
+</form>
+{% endblock %}
